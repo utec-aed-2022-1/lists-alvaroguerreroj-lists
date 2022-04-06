@@ -1,20 +1,24 @@
 #pragma once
 
-template <typename T>
-struct Node {
+template<typename T>
+struct Node
+{
     T data;
     Node<T>* next;
     Node<T>* prev;
 
-    Node(){ 
+    Node()
+    {
         // TODO
     }
 
-    Node(T value){
+    Node(T value)
+    {
         // TODO
     }
 
-    void killSelf(){
-        // TODO      
-    }    
+    void killSelf()
+    {
+        // TODO
+    }
 };
