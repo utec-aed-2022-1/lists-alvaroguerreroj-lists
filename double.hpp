@@ -1,5 +1,5 @@
-#ifndef DOUBLY_H
-#define DOUBLY_H
+#pragma once
+
 #include <iostream>
 #include "list.hpp"
 
@@ -18,4 +18,3 @@ class DoubleList : public List<T> {
         }
         
 };
-#endif

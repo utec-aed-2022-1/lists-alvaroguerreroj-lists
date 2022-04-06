@@ -1,5 +1,5 @@
-#ifndef CIRCULAR_H
-#define CIRCULAR_H
+#pragma once
+
 #include <iostream>
 #include "list.hpp"
 
@@ -16,5 +16,3 @@ class CircularList : public List<T> {
            // TODO
         }       
 };
-
-#endif

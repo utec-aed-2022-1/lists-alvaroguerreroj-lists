@@ -1,5 +1,5 @@
-#ifndef FORWARD_H
-#define FORWARD_H
+#pragma once
+
 #include <iostream>
 #include "list.hpp"
 
@@ -82,5 +82,3 @@ class ForwardList : public List<T> {
         }
         
 };
-
-#endif

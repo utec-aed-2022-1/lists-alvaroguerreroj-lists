@@ -1,5 +1,4 @@
-#ifndef LIST_H
-#define LIST_H
+#pragma once
 
 #include "node.hpp"
 
@@ -30,5 +29,3 @@ class List {
         virtual void reverse() = 0;
         virtual std::string name() = 0;
 };
-
-#endif
