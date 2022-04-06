@@ -1,7 +1,7 @@
 #ifndef CIRCULAR_H
 #define CIRCULAR_H
 #include <iostream>
-#include "list.h"
+#include "list.hpp"
 
 // TODO: Implement all methods
 template <typename T>

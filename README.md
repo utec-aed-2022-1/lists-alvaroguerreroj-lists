@@ -2,7 +2,7 @@
 # Integrantes: ____   _____
 
 # Lists
-Implementar todas las funciones en los .h
+Implementar todas las funciones en los .hpp
 
 **T front();** // Retorna el elemento al comienzo
 

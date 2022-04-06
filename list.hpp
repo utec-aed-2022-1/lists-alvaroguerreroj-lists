@@ -1,7 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "node.h"
+#include "node.hpp"
 
 // TODO: Implement all methods
 template <typename T>

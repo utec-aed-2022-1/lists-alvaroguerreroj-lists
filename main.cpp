@@ -1,8 +1,8 @@
 #include <iostream>
-#include "tester.h"
-#include "forward.h"
-#include "double.h"
-#include "circular.h"
+#include "tester.hpp"
+#include "forward.hpp"
+#include "double.hpp"
+#include "circular.hpp"
 
 using namespace std;
 
