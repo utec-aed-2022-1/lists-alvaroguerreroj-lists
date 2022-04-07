@@ -10,9 +10,7 @@ class List
 {
 public:
     List() {};
-    virtual ~List() {
-        // TODO
-    };
+    virtual ~List() {};
 
     // Contrato
     virtual T front() = 0;
