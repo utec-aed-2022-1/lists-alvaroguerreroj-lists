@@ -1,7 +1,9 @@
 #pragma once
 
 #include <deque>
+#include <initializer_list>
 #include <iostream>
+#include <iterator>
 #include <stdexcept>
 
 #include "list.hpp"
@@ -25,6 +27,17 @@ public:
         : m_head(nullptr),
           m_size(0)
     {
+    }
+
+    ForwardList(std::initializer_list<T> il)
+        : ForwardList<T>()
+    {
+        m_size = il.size();
+
+        for (auto it = std::rbegin(il); it != std::rend(il); it++)
+        {
+            this->push_front(*it);
+        }
     }
 
     ~ForwardList()
