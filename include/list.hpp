@@ -22,7 +22,7 @@ public:
     virtual void push_back(T) = 0;
     virtual T pop_front() = 0;
     virtual T pop_back() = 0;
-    virtual T insert(T, size_type) = 0;
+    virtual void insert(T, size_type) = 0;
     virtual bool remove(size_type) = 0;
     virtual T& operator[](size_type) = 0; // debe ser declarado en cada clase hija
     virtual bool is_empty() = 0;

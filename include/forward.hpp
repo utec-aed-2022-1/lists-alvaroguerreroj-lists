@@ -124,7 +124,7 @@ public:
         }
     }
 
-    T insert(T data, size_type pos)
+    void insert(T data, size_type pos)
     {
         throw("sin definir");
     }
