@@ -95,7 +95,19 @@ public:
 
     T pop_front()
     {
-        throw("sin definir");
+        if (this->is_empty())
+        {
+            throw std::runtime_error("Empty list");
+        }
+
+        T ret = m_head->data;
+        node_p next_head = m_head->next;
+        delete m_head;
+        m_head = next_head;
+
+        m_size--;
+
+        return ret;
     }
 
     T pop_back()
