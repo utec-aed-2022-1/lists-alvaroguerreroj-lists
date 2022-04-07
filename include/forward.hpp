@@ -126,7 +126,17 @@ public:
 
     void insert(T data, size_type pos)
     {
-        throw("sin definir");
+        if (pos == 0)
+        {
+            this->push_front(data);
+        }
+        else
+        {
+            node_p it = this->nth_pointer(pos - 1);
+            it->next = new Node<T>(data, it->next);
+
+            m_size++;
+        }
     }
 
     bool remove(size_type pos)
