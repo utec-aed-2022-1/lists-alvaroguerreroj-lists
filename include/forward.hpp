@@ -43,7 +43,15 @@ public:
 
     ~ForwardList()
     {
-        // TODO
+        node_p it = m_head;
+
+        while (it != nullptr)
+        {
+            node_p next = it->next;
+            delete it;
+
+            it = next;
+        }
     }
 
     T front()
