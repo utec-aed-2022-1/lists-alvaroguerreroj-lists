@@ -20,7 +20,6 @@ private:
 
 public:
     ForwardList()
-        : List<T>()
     {
     }
 
