@@ -15,8 +15,8 @@ private:
     using node_p = Node<T>*;
 
 private:
-    Node<T>* head;
-    size_type nodes;
+    node_p m_head;
+    size_type m_size;
 
 public:
     ForwardList()
