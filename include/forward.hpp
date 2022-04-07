@@ -8,9 +8,12 @@
 template<typename T>
 class ForwardList : public List<T>
 {
+public:
+    using size_type = size_t;
+
 private:
     Node<T>* head;
-    int nodes;
+    size_type nodes;
 
 public:
     ForwardList()
@@ -53,17 +56,17 @@ public:
         throw("sin definir");
     }
 
-    T insert(T data, int pos)
+    T insert(T data, size_type pos)
     {
         throw("sin definir");
     }
 
-    bool remove(int pos)
+    bool remove(size_type pos)
     {
         throw("sin definir");
     }
 
-    T& operator[](int pos)
+    T& operator[](size_type pos)
     {
         throw("sin definir");
     }
@@ -73,7 +76,7 @@ public:
         throw("sin definir");
     }
 
-    int size()
+    size_type size()
     {
         throw("sin definir");
     }
