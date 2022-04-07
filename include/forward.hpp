@@ -9,7 +9,7 @@ template<typename T>
 class ForwardList : public List<T>
 {
 public:
-    using size_type = size_t;
+    using typename List<T>::size_type;
 
 private:
     using node_p = Node<T>*;
