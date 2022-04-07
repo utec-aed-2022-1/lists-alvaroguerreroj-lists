@@ -66,7 +66,7 @@ public:
 
     T back()
     {
-        throw("sin definir");
+        return this->last()->data;
     }
 
     void push_front(T data)
