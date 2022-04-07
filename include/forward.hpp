@@ -112,7 +112,22 @@ public:
 
     T pop_back()
     {
-        throw("sin definir");
+        if (m_size == 1)
+        {
+            return this->pop_front();
+        }
+        else
+        {
+            node_p second_to_last = this->last(2);
+
+            T ret = second_to_last->next->data;
+            delete second_to_last->next;
+            second_to_last->next = nullptr;
+
+            m_size--;
+
+            return ret;
+        }
     }
 
     T insert(T data, size_type pos)
