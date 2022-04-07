@@ -16,9 +16,4 @@ struct Node
     {
         // TODO
     }
-
-    void killSelf()
-    {
-        // TODO
-    }
 };
