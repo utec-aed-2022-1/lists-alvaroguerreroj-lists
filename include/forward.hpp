@@ -20,6 +20,8 @@ private:
 
 public:
     ForwardList()
+        : m_head(nullptr),
+          m_size(0)
     {
     }
 
