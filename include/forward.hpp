@@ -6,6 +6,7 @@
 #include <iterator>
 #include <sstream>
 #include <stdexcept>
+#include <tuple>
 
 #include "list.hpp"
 
@@ -188,7 +189,44 @@ public:
 
     void sort()
     {
-        throw("sin definir");
+        if (m_size < 2)
+        {
+            return;
+        }
+
+        bool has_swapped;
+        do
+        {
+            has_swapped = false;
+
+            node_p it1 = m_head;
+            node_p it2 = m_head->next;
+
+            if (it1->data > it2->data)
+            {
+                std::tie(m_head, it1->next, it2->next) = std::make_tuple(it2, it2->next, it1);
+                std::swap(it1, it2);
+
+                has_swapped = true;
+            }
+
+            while (it2->next != nullptr)
+            {
+                node_p it0 = it1;
+                it1 = it2;
+                it2 = it2->next;
+
+                if (it1->data > it2->data)
+                {
+                    std::tie(it0->next, it1->next, it2->next)
+                        = std::make_tuple(it2, it2->next, it1);
+                    std::swap(it1, it2);
+
+                    has_swapped = true;
+                }
+            }
+
+        } while (has_swapped);
     }
 
     bool is_sorted()
