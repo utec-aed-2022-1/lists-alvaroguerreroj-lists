@@ -13,4 +13,6 @@ struct Node
           prev(prev)
     {
     }
+
+    ~Node() = default;
 };
