@@ -198,6 +198,22 @@ public:
     }
 
 private:
+    node_p nth_pointer(size_type pos)
+    {
+        verify_required_size(pos);
+
+        node_p it = m_head;
+
+        while (pos != 0)
+        {
+            it = it->next;
+
+            pos--;
+        }
+
+        return it;
+    }
+
     /**
      * Returns a `node_p` so that there are at least `n` remaining nodes (including the node
      * returned).
