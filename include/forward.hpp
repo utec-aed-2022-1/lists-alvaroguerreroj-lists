@@ -114,7 +114,7 @@ public:
 
     size_type size()
     {
-        throw("sin definir");
+        return m_size;
     }
 
     void clear()
