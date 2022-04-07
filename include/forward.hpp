@@ -56,7 +56,12 @@ public:
 
     T front()
     {
-        throw("sin definir");
+        if (!m_head)
+        {
+            throw std::runtime_error("Nothing at the front");
+        }
+
+        return m_head->data;
     }
 
     T back()
