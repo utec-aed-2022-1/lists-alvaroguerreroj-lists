@@ -242,4 +242,12 @@ private:
 
         return node_ps.front();
     }
+
+    void verify_required_size(size_type n)
+    {
+        if (n > m_size)
+        {
+            throw std::runtime_error("Insufficient size");
+        }
+    }
 };
