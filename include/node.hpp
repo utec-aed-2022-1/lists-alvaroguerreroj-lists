@@ -7,13 +7,10 @@ struct Node
     Node<T>* next;
     Node<T>* prev;
 
-    Node()
+    Node(T data, Node<T>* next = nullptr, Node<T>* prev = nullptr)
+        : data(data),
+          next(next),
+          prev(prev)
     {
-        // TODO
-    }
-
-    Node(T value)
-    {
-        // TODO
     }
 };
