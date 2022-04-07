@@ -193,7 +193,24 @@ public:
 
     bool is_sorted()
     {
-        throw("sin definir");
+        if (m_size == 0)
+        {
+            return true;
+        }
+
+        node_p it = m_head;
+
+        while (it->next != nullptr)
+        {
+            if (!(it->data < it->next->data))
+            {
+                return false;
+            }
+
+            it = it->next;
+        }
+
+        return true;
     }
 
     void reverse()
