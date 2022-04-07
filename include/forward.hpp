@@ -1,6 +1,8 @@
 #pragma once
 
+#include <deque>
 #include <iostream>
+#include <stdexcept>
 
 #include "list.hpp"
 
@@ -111,5 +113,45 @@ public:
     std::string name()
     {
         return "ForwardList";
+    }
+
+private:
+    /**
+     * Returns a `node_p` so that there are at least `n` remaining nodes (including the node
+     * returned).
+     *
+     * If `n` is 0, returns `nullptr`.
+     *
+     * @param n The number of elements that should remain, should be smaller or equal to the
+     * number of elements in the list.
+     * @return A `node_p` with `n` remaining elements.
+     */
+    node_p last(size_type n = 1)
+    {
+        if (n == 0)
+        {
+            return nullptr;
+        }
+        if (n > m_size)
+        {
+            throw std::runtime_error("Size exceeded");
+        }
+
+        node_p it = m_head;
+
+        std::deque<node_p> node_ps;
+        for (unsigned i = 0; i < n; i++)
+        {
+            node_ps.push_back(it);
+            it = it->next;
+        }
+
+        while (!(node_ps.back()->next == nullptr))
+        {
+            node_ps.pop_front();
+            node_ps.push_back(node_ps.back()->next);
+        }
+
+        return node_ps.front();
     }
 };
