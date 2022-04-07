@@ -138,7 +138,7 @@ public:
 
     T& operator[](size_type pos)
     {
-        throw("sin definir");
+        return this->nth_pointer(pos)->data;
     }
 
     bool is_empty()
