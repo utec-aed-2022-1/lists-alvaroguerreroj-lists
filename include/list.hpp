@@ -9,6 +9,9 @@ template<typename T>
 class List
 {
 public:
+    using size_type = size_t;
+
+public:
     List() {};
     virtual ~List() {};
 
