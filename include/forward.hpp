@@ -215,7 +215,18 @@ public:
 
     void reverse()
     {
-        throw("sin definir");
+        node_p old_head = nullptr;
+        node_p it = m_head;
+
+        while (it != nullptr)
+        {
+            node_p next = it->next;
+            it->next = old_head;
+            old_head = it;
+            it = next;
+        }
+
+        m_head = old_head;
     }
 
     std::string name()
