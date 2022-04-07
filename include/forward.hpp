@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include <iostream>
 #include <iterator>
+#include <sstream>
 #include <stdexcept>
 
 #include "list.hpp"
@@ -126,6 +127,24 @@ public:
     std::string name()
     {
         return "ForwardList";
+    }
+
+    std::string to_string()
+    {
+        std::ostringstream oss;
+
+        oss << "{ ";
+
+        node_p it = m_head;
+        while (it != nullptr)
+        {
+            oss << it->data << " ";
+            it = it->next;
+        }
+
+        oss << "}";
+
+        return oss.str();
     }
 
 private:
