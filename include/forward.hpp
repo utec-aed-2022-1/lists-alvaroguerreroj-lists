@@ -56,10 +56,7 @@ public:
 
     T front()
     {
-        if (!m_head)
-        {
-            throw std::runtime_error("Nothing at the front");
-        }
+        this->verify_required_size(1);
 
         return m_head->data;
     }
@@ -95,10 +92,7 @@ public:
 
     T pop_front()
     {
-        if (this->is_empty())
-        {
-            throw std::runtime_error("Empty list");
-        }
+        this->verify_required_size(1);
 
         T ret = m_head->data;
         node_p next_head = m_head->next;
@@ -220,10 +214,8 @@ private:
         {
             return nullptr;
         }
-        if (n > m_size)
-        {
-            throw std::runtime_error("Size exceeded");
-        }
+
+        this->verify_required_size(n);
 
         node_p it = m_head;
 
