@@ -79,7 +79,18 @@ public:
 
     void push_back(T data)
     {
-        throw("sin definir");
+        if (this->is_empty())
+        {
+            this->push_front(data);
+        }
+        else
+        {
+            node_p back_p = this->last();
+            back_p->next = new Node<T>(data);
+            back_p = back_p->next;
+
+            m_size++;
+        }
     }
 
     T pop_front()
