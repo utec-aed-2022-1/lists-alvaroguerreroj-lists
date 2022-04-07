@@ -131,7 +131,7 @@ public:
         }
     }
 
-    bool remove(size_type pos)
+    void remove(size_type pos)
     {
         throw("sin definir");
     }
