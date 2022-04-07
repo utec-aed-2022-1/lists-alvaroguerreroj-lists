@@ -18,10 +18,10 @@ public:
     using typename List<T>::size_type;
 
 private:
-    using node_p = Node<T>*;
+    using node = Node<T>;
 
 private:
-    node_p m_head;
+    node* m_head;
     size_type m_size;
 
 public:
@@ -61,7 +61,7 @@ public:
 
     void push_front(T data)
     {
-        node_p new_head = new Node<T>(data, m_head);
+        node* new_head = new Node<T>(data, m_head);
         m_head = new_head;
 
         m_size++;
@@ -75,7 +75,7 @@ public:
         }
         else
         {
-            node_p back_p = this->last();
+            node* back_p = this->last();
             back_p->next = new Node<T>(data);
             back_p = back_p->next;
 
@@ -88,7 +88,7 @@ public:
         this->verify_required_size(1);
 
         T ret = m_head->data;
-        node_p next_head = m_head->next;
+        node* next_head = m_head->next;
         delete m_head;
         m_head = next_head;
 
@@ -105,7 +105,7 @@ public:
         }
         else
         {
-            node_p second_to_last = this->last(2);
+            node* second_to_last = this->last(2);
 
             T ret = second_to_last->next->data;
             delete second_to_last->next;
@@ -125,7 +125,7 @@ public:
         }
         else
         {
-            node_p it = this->nth_pointer(pos - 1);
+            node* it = this->nth_pointer(pos - 1);
             it->next = new Node<T>(data, it->next);
 
             m_size++;
@@ -142,8 +142,8 @@ public:
         {
             this->verify_required_size(pos);
 
-            node_p it = this->nth_pointer(pos - 1);
-            node_p next_next = it->next->next;
+            node* it = this->nth_pointer(pos - 1);
+            node* next_next = it->next->next;
             delete it->next;
             it->next = next_next;
 
@@ -173,11 +173,11 @@ public:
 
     void clear()
     {
-        node_p it = m_head;
+        node* it = m_head;
 
         while (it != nullptr)
         {
-            node_p next = it->next;
+            node* next = it->next;
             delete it;
 
             it = next;
@@ -199,8 +199,8 @@ public:
         {
             has_swapped = false;
 
-            node_p it1 = m_head;
-            node_p it2 = m_head->next;
+            node* it1 = m_head;
+            node* it2 = m_head->next;
 
             if (it1->data > it2->data)
             {
@@ -212,7 +212,7 @@ public:
 
             while (it2->next != nullptr)
             {
-                node_p it0 = it1;
+                node* it0 = it1;
                 it1 = it2;
                 it2 = it2->next;
 
@@ -236,7 +236,7 @@ public:
             return true;
         }
 
-        node_p it = m_head;
+        node* it = m_head;
 
         while (it->next != nullptr)
         {
@@ -253,12 +253,12 @@ public:
 
     void reverse()
     {
-        node_p old_head = nullptr;
-        node_p it = m_head;
+        node* old_head = nullptr;
+        node* it = m_head;
 
         while (it != nullptr)
         {
-            node_p next = it->next;
+            node* next = it->next;
             it->next = old_head;
             old_head = it;
             it = next;
@@ -278,7 +278,7 @@ public:
 
         oss << "{ ";
 
-        node_p it = m_head;
+        node* it = m_head;
         while (it != nullptr)
         {
             oss << it->data << " ";
@@ -291,11 +291,11 @@ public:
     }
 
 private:
-    node_p nth_pointer(size_type pos)
+    node* nth_pointer(size_type pos)
     {
         verify_required_size(pos);
 
-        node_p it = m_head;
+        node* it = m_head;
 
         while (pos != 0)
         {
@@ -308,16 +308,16 @@ private:
     }
 
     /**
-     * Returns a `node_p` so that there are at least `n` remaining nodes (including the node
+     * Returns a `node*` so that there are at least `n` remaining nodes (including the node
      * returned).
      *
      * If `n` is 0, returns `nullptr`.
      *
      * @param n The number of elements that should remain, should be smaller or equal to the
      * number of elements in the list.
-     * @return A `node_p` with `n` remaining elements.
+     * @return A `node*` with `n` remaining elements.
      */
-    node_p last(size_type n = 1)
+    node* last(size_type n = 1)
     {
         if (n == 0)
         {
@@ -326,9 +326,9 @@ private:
 
         this->verify_required_size(n);
 
-        node_p it = m_head;
+        node* it = m_head;
 
-        std::deque<node_p> node_ps;
+        std::deque<node*> node_ps;
         for (unsigned i = 0; i < n; i++)
         {
             node_ps.push_back(it);
