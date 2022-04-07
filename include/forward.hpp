@@ -42,7 +42,10 @@ public:
 
     void push_front(T data)
     {
-        throw("sin definir");
+        node_p new_head = new Node<T>(data, m_head);
+        m_head = new_head;
+
+        m_size++;
     }
 
     void push_back(T data)
