@@ -123,6 +123,11 @@ public:
         return m_size == 0;
     }
 
+    operator bool()
+    {
+        return !this->is_empty();
+    }
+
     size_type size()
     {
         return m_size;
