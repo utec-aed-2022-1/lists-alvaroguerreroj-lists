@@ -120,7 +120,7 @@ public:
 
     bool is_empty()
     {
-        throw("sin definir");
+        return m_size == 0;
     }
 
     size_type size()
