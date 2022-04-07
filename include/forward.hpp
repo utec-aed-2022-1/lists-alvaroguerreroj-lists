@@ -12,6 +12,9 @@ public:
     using size_type = size_t;
 
 private:
+    using node_p = Node<T>*;
+
+private:
     Node<T>* head;
     size_type nodes;
 
