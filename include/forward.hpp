@@ -133,7 +133,21 @@ public:
 
     void remove(size_type pos)
     {
-        throw("sin definir");
+        if (pos == 0)
+        {
+            this->pop_front();
+        }
+        else
+        {
+            this->verify_required_size(pos);
+
+            node_p it = this->nth_pointer(pos - 1);
+            node_p next_next = it->next->next;
+            delete it->next;
+            it->next = next_next;
+
+            m_size--;
+        }
     }
 
     T& operator[](size_type pos)
