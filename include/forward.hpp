@@ -166,7 +166,18 @@ public:
 
     void clear()
     {
-        throw("sin definir");
+        node_p it = m_head;
+
+        while (it != nullptr)
+        {
+            node_p next = it->next;
+            delete it;
+
+            it = next;
+        }
+
+        m_head = nullptr;
+        m_size = 0;
     }
 
     void sort()
