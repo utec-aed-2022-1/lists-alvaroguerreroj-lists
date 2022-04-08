@@ -128,6 +128,11 @@ public:
         m_size = 0;
     }
 
+    size_type size()
+    {
+        return m_size;
+    }
+
 private:
     void verify_required_size(size_type n)
     {
