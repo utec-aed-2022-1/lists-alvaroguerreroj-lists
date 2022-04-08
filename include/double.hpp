@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <stdexcept>
 
 #include "list.hpp"
 
@@ -53,5 +54,14 @@ public:
         m_tail->prev = m_head;
 
         m_size = 0;
+    }
+
+private:
+    void verify_required_size(size_type n)
+    {
+        if (n > m_size)
+        {
+            throw std::runtime_error("Insufficient size");
+        }
     }
 };
