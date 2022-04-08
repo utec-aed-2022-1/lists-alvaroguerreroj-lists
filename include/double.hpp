@@ -1,7 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <stdexcept>
+#include <string>
 #include <tuple>
 #include <utility>
 
@@ -207,6 +209,24 @@ public:
     std::string name()
     {
         return "DoubleLinkedList";
+    }
+
+    std::string to_string()
+    {
+        std::ostringstream oss;
+
+        oss << "{ ";
+
+        node* it = m_head->next;
+        while (it != m_tail)
+        {
+            oss << it->data << " ";
+            it = it->next;
+        }
+
+        oss << "}";
+
+        return oss.str();
     }
 
 private:
