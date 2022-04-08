@@ -53,6 +53,13 @@ public:
         return m_tail->prev->data;
     }
 
+    void insert(T data, size_type pos)
+    {
+        node* nth_p = this->nth_pointer(pos);
+
+        this->insert(data, nth_p->prev, nth_p);
+    }
+
     void clear()
     {
         node* it = m_head->next;
