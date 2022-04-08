@@ -161,6 +161,28 @@ public:
         } while (has_swapped);
     }
 
+    bool is_sorted()
+    {
+        if (m_size == 0)
+        {
+            return true;
+        }
+
+        node* it = m_head->next;
+
+        while (it->next != m_tail)
+        {
+            if (!(it->data < it->next->data))
+            {
+                return false;
+            }
+
+            it = it->next;
+        }
+
+        return true;
+    }
+
     size_type size()
     {
         return m_size;
