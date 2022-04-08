@@ -63,6 +63,17 @@ public:
         this->insert(data, m_tail->prev, m_tail);
     }
 
+    T pop_front()
+    {
+        this->verify_required_size(1);
+
+        T ret = m_head->next->data;
+
+        this->remove(m_head->next);
+
+        return ret;
+    }
+
     void insert(T data, size_type pos)
     {
         node* nth_p = this->nth_pointer(pos);
