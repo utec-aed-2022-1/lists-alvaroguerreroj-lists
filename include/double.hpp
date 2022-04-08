@@ -74,6 +74,17 @@ public:
         return ret;
     }
 
+    T pop_back()
+    {
+        this->verify_required_size(1);
+
+        T ret = m_tail->prev->data;
+
+        this->remove(m_tail->prev);
+
+        return ret;
+    }
+
     void insert(T data, size_type pos)
     {
         node* nth_p = this->nth_pointer(pos);
