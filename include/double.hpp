@@ -130,6 +130,37 @@ public:
         m_size = 0;
     }
 
+    void sort()
+    {
+        if (m_size < 2)
+        {
+            return;
+        }
+
+        bool has_swapped;
+        do
+        {
+            has_swapped = false;
+
+            node* it1 = m_head->next;
+            node* it2 = m_head->next->next;
+
+            while (it2 != m_tail)
+            {
+                if (it1->data > it2->data)
+                {
+                    this->swap_nodes(it1, it2);
+                    std::swap(it1, it2);
+
+                    has_swapped = true;
+                }
+
+                it1 = it2;
+                it2 = it2->next;
+            }
+        } while (has_swapped);
+    }
+
     size_type size()
     {
         return m_size;
