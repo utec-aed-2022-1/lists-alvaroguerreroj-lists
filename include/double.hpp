@@ -58,6 +58,11 @@ public:
         this->insert(data, m_head, m_head->next);
     }
 
+    void push_back(T data)
+    {
+        this->insert(data, m_tail->prev, m_tail);
+    }
+
     void insert(T data, size_type pos)
     {
         node* nth_p = this->nth_pointer(pos);
