@@ -70,6 +70,15 @@ public:
         this->insert(data, nth_p->prev, nth_p);
     }
 
+    void remove(size_type pos)
+    {
+        this->verify_required_size(1);
+
+        node* it = this->nth_pointer(pos);
+
+        this->remove(it);
+    }
+
     void clear()
     {
         node* it = m_head->next;
