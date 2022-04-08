@@ -15,9 +15,9 @@ private:
     using node = Node<T>;
 
 private:
-    node* head;
-    node* tail;
-    size_type size;
+    node* m_head;
+    node* m_tail;
+    size_type m_size;
 
 public:
     DoubleList()
