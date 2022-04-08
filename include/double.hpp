@@ -12,8 +12,11 @@ public:
     using typename List<T>::size_type;
 
 private:
-    Node<T>* head;
-    Node<T>* tail;
+    using node = Node<T>;
+
+private:
+    node* head;
+    node* tail;
     int nodes;
 
 public:
