@@ -204,6 +204,11 @@ public:
         std::swap(m_head, m_tail);
     }
 
+    std::string name()
+    {
+        return "DoubleLinkedList";
+    }
+
 private:
     void verify_required_size(size_type n)
     {
