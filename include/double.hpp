@@ -32,7 +32,10 @@ public:
 
     ~DoubleList()
     {
-        // TODO
+        this->clear();
+
+        delete m_head;
+        delete m_tail;
     }
 
     void clear()
