@@ -53,6 +53,11 @@ public:
         return m_tail->prev->data;
     }
 
+    void push_front(T data)
+    {
+        this->insert(data, m_head, m_head->next);
+    }
+
     void insert(T data, size_type pos)
     {
         node* nth_p = this->nth_pointer(pos);
