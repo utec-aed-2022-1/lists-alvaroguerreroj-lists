@@ -17,7 +17,7 @@ private:
 private:
     node* head;
     node* tail;
-    int nodes;
+    size_type size;
 
 public:
     DoubleList()
