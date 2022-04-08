@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <utility>
 
 #include "list.hpp"
 
@@ -131,6 +132,22 @@ public:
     size_type size()
     {
         return m_size;
+    }
+
+    void reverse()
+    {
+        // NOTE: After this, the nodes that were the head and the tail are swapped.
+
+        node* it = m_head;
+
+        while (it != m_tail)
+        {
+            std::swap(it->next, it->prev);
+            it = it->prev;
+        }
+        std::swap(it->next, it->prev);
+
+        std::swap(m_head, m_tail);
     }
 
 private:
