@@ -16,7 +16,7 @@ private:
 
 private:
     node* head; // sentinel
-    int nodes;
+    size_type nodes;
 
 public:
     CircularList()
