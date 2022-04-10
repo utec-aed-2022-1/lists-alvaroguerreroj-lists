@@ -8,6 +8,9 @@
 template<typename T>
 class CircularList : public List<T>
 {
+public:
+    using typename List<T>::size_type;
+
 private:
     Node<T>* head; // sentinel
     int nodes;
