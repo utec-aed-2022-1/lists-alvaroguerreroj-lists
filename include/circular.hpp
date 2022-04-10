@@ -12,7 +12,10 @@ public:
     using typename List<T>::size_type;
 
 private:
-    Node<T>* head; // sentinel
+    using node = Node<T>;
+
+private:
+    node* head; // sentinel
     int nodes;
 
 public:
