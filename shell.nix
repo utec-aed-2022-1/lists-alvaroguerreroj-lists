@@ -13,6 +13,7 @@ mkShell {
     gdb
     cgdb
 
+    just
     gnumake
     bear
     meson
