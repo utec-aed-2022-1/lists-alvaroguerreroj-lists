@@ -15,8 +15,8 @@ private:
     using node = Node<T>;
 
 private:
-    node* head; // sentinel
-    size_type nodes;
+    node* m_head; // sentinel
+    size_type m_nodes;
 
 public:
     CircularList()
