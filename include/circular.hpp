@@ -42,6 +42,13 @@ public:
         return m_head->next->data;
     }
 
+    T back()
+    {
+        this->verify_required_size(1);
+
+        return m_head->prev->data;
+    }
+
     void clear()
     {
         node* it = m_head->next;
