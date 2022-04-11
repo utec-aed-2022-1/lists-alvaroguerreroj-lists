@@ -30,7 +30,8 @@ public:
 
     ~CircularList()
     {
-        // TODO
+        this->clear();
+        delete m_head;
     }
 
     void clear()
