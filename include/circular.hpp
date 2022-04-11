@@ -74,4 +74,13 @@ private:
             throw std::runtime_error("Insufficient size");
         }
     }
+
+    void insert(T data, node* left, node* right)
+    {
+        node* new_element = new node(data, right, left);
+        left->next = new_element;
+        right->prev = new_element;
+
+        m_size++;
+    }
 };
