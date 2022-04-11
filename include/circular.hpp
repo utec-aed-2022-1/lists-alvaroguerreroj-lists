@@ -35,6 +35,13 @@ public:
         delete m_head;
     }
 
+    T front()
+    {
+        this->verify_required_size(1);
+
+        return m_head->next->data;
+    }
+
     void clear()
     {
         node* it = m_head->next;
