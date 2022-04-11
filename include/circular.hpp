@@ -19,9 +19,13 @@ private:
     size_type m_size;
 
 public:
+    // TODO: Check whether `m_head` can be initialized passing `m_head` as an argument.
     CircularList()
-        : List<T>()
+        : m_head(new node(T())),
+          m_size(0)
     {
+        m_head->next = m_head;
+        m_head->prev = m_head;
     }
 
     ~CircularList()
