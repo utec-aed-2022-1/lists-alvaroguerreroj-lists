@@ -49,6 +49,11 @@ public:
         return m_head->prev->data;
     }
 
+    void push_front(T data)
+    {
+        this->insert(data, m_head, m_head->next);
+    }
+
     void clear()
     {
         node* it = m_head->next;
