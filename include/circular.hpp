@@ -54,6 +54,11 @@ public:
         this->insert(data, m_head, m_head->next);
     }
 
+    void push_back(T data)
+    {
+        this->insert(data, m_head->prev, m_head);
+    }
+
     void clear()
     {
         node* it = m_head->next;
