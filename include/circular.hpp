@@ -32,4 +32,21 @@ public:
     {
         // TODO
     }
+
+    void clear()
+    {
+        node* it = m_head->next;
+
+        while (it != m_head)
+        {
+            node* next = it->next;
+            delete it;
+            it = next;
+        }
+
+        m_head->next = m_head;
+        m_head->prev = m_head;
+
+        m_size = 0;
+    }
 };
