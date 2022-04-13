@@ -1,6 +1,5 @@
 #pragma once
 
-#include <deque>
 #include <initializer_list>
 #include <iostream>
 #include <iterator>
@@ -326,21 +325,15 @@ private:
         this->verify_required_size(n);
 
         node* it = m_head;
+        size_type remaining = m_size;
 
-        std::deque<node*> node_ps;
-        for (unsigned i = 0; i < n; i++)
+        while (remaining > n)
         {
-            node_ps.push_back(it);
             it = it->next;
+            remaining--;
         }
 
-        while (!(node_ps.back()->next == nullptr))
-        {
-            node_ps.pop_front();
-            node_ps.push_back(node_ps.back()->next);
-        }
-
-        return node_ps.front();
+        return it;
     }
 
     void verify_required_size(size_type n)
