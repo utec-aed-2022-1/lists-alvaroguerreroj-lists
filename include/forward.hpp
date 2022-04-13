@@ -18,7 +18,6 @@ public:
 private:
     using node = Node<T>;
 
-private:
     node* m_head;
     size_type m_size;
 
@@ -43,14 +42,14 @@ public:
         this->clear();
     }
 
-    T front()
+    auto front() -> T
     {
         this->verify_required_size(1);
 
         return m_head->data;
     }
 
-    T back()
+    auto back() -> T
     {
         return this->last()->data;
     }
@@ -78,7 +77,7 @@ public:
         }
     }
 
-    T pop_front()
+    auto pop_front() -> T
     {
         this->verify_required_size(1);
 
@@ -92,24 +91,22 @@ public:
         return ret;
     }
 
-    T pop_back()
+    auto pop_back() -> T
     {
         if (m_size == 1)
         {
             return this->pop_front();
         }
-        else
-        {
-            node* second_to_last = this->last(2);
 
-            T ret = second_to_last->next->data;
-            delete second_to_last->next;
-            second_to_last->next = nullptr;
+        node* second_to_last = this->last(2);
 
-            m_size--;
+        T ret = second_to_last->next->data;
+        delete second_to_last->next;
+        second_to_last->next = nullptr;
 
-            return ret;
-        }
+        m_size--;
+
+        return ret;
     }
 
     void insert(T data, size_type pos)
@@ -146,12 +143,12 @@ public:
         }
     }
 
-    T& operator[](size_type pos)
+    auto operator[](size_type pos) -> T&
     {
         return this->nth_pointer(pos)->data;
     }
 
-    bool is_empty()
+    auto is_empty() -> bool
     {
         return m_size == 0;
     }
@@ -161,7 +158,7 @@ public:
         return !this->is_empty();
     }
 
-    size_type size()
+    auto size() -> size_type
     {
         return m_size;
     }
@@ -189,7 +186,7 @@ public:
             return;
         }
 
-        bool has_swapped;
+        bool has_swapped = false;
         do
         {
             has_swapped = false;
@@ -224,7 +221,7 @@ public:
         } while (has_swapped);
     }
 
-    bool is_sorted()
+    auto is_sorted() -> bool
     {
         if (m_size == 0)
         {
@@ -262,12 +259,12 @@ public:
         m_head = old_head;
     }
 
-    std::string name()
+    auto name() -> std::string
     {
         return "ForwardList";
     }
 
-    std::string to_string()
+    auto to_string() -> std::string
     {
         std::ostringstream oss;
 
@@ -286,7 +283,7 @@ public:
     }
 
 private:
-    node* nth_pointer(size_type pos)
+    auto nth_pointer(size_type pos) -> node*
     {
         verify_required_size(pos);
 
@@ -312,7 +309,7 @@ private:
      * number of elements in the list.
      * @return A `node*` with `n` remaining elements.
      */
-    node* last(size_type n = 1)
+    auto last(size_type n = 1) -> node*
     {
         if (n == 0)
         {
