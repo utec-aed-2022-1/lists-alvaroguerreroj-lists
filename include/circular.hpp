@@ -9,7 +9,6 @@
 
 #include "list.hpp"
 
-// TODO: Implement all methods
 template<typename T>
 class CircularList : public List<T>
 {

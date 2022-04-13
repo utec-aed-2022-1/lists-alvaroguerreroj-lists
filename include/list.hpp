@@ -4,7 +4,6 @@
 
 #include "node.hpp"
 
-// TODO: Implement all methods
 template<typename T>
 class List
 {
