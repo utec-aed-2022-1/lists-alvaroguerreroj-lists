@@ -25,83 +25,157 @@ private:
 
 public:
     DoubleList()
-        : m_head(new node(T(), nullptr, nullptr)),
-          m_tail(new node(T(), nullptr, m_head)),
+        : m_head(nullptr),
+          m_tail(nullptr),
           m_size(0)
     {
-        // NOTE: Not sure if it's necessary to set `m_head->next`. When `m_head` is initialized
-        // `m_tail` has not been defined yet so it may be erroneous.
-        m_head->next = m_tail;
     }
 
     ~DoubleList()
     {
         this->clear();
-
-        delete m_head;
-        delete m_tail;
     }
 
     T front()
     {
         this->verify_required_size(1);
 
-        return m_head->next->data;
+        return m_head->data;
     }
 
     T back()
     {
         this->verify_required_size(1);
 
-        return m_tail->prev->data;
+        return m_tail->data;
     }
 
     void push_front(T data)
     {
-        this->insert(data, m_head, m_head->next);
+        if (m_size == 0)
+        {
+            m_head = new node(data);
+            m_tail = m_head;
+        }
+        else
+        {
+            node* new_head = new node(data, m_head);
+
+            m_head->prev = new_head;
+
+            m_head = new_head;
+        }
+
+        m_size++;
     }
 
     void push_back(T data)
     {
-        this->insert(data, m_tail->prev, m_tail);
+        if (m_size == 0)
+        {
+            this->push_front(data);
+        }
+        else
+        {
+            m_tail->next = new node(data, nullptr, m_tail);
+
+            m_tail = m_tail->next;
+
+            m_size++;
+        }
     }
 
     T pop_front()
     {
         this->verify_required_size(1);
 
-        T ret = m_head->next->data;
+        if (m_size == 1)
+        {
+            delete m_head;
 
-        this->remove(m_head->next);
+            m_head = nullptr;
+            m_tail = nullptr;
 
-        return ret;
+            m_size--;
+
+            return m_head->data;
+        }
+        else
+        {
+            T ret = m_head->data;
+
+            node* next_head = m_head->next;
+
+            delete m_head;
+
+            m_head = next_head;
+            m_head->prev = nullptr;
+
+            m_size--;
+
+            return ret;
+        }
     }
 
     T pop_back()
     {
         this->verify_required_size(1);
 
-        T ret = m_tail->prev->data;
+        if (m_size == 1)
+        {
+            return this->pop_front();
+        }
+        else
+        {
+            T ret = m_tail->data;
 
-        this->remove(m_tail->prev);
+            node* next_tail = m_tail->prev;
 
-        return ret;
+            delete m_tail;
+
+            m_tail = next_tail;
+            m_tail->next = nullptr;
+
+            m_size--;
+
+            return ret;
+        }
     }
 
     void insert(T data, size_type pos)
     {
-        node* nth_p = this->nth_pointer(pos);
+        this->verify_required_size(pos);
 
-        this->insert(data, nth_p->prev, nth_p);
+        if (pos == 0)
+        {
+            this->push_front(data);
+        }
+        else
+        {
+            node* nth_p = this->nth_pointer(pos);
+
+            this->insert(data, nth_p->prev, nth_p);
+        }
     }
 
     void remove(size_type pos)
     {
         this->verify_required_size(1);
 
-        node* it = this->nth_pointer(pos);
+        if (pos == 0)
+        {
+            this->pop_front();
+        }
+        else if (pos == m_size - 1)
+        {
+            this->pop_back();
+        }
+        else
+        {
+            node* it = this->nth_pointer(pos);
 
-        this->remove(it);
+            this->remove(it);
+        }
     }
 
     T& operator[](size_type pos)
@@ -116,17 +190,17 @@ public:
 
     void clear()
     {
-        node* it = m_head->next;
+        node* it = m_head;
 
-        while (it != m_tail)
+        while (it != nullptr)
         {
             node* next = it->next;
             delete it;
             it = next;
         }
 
-        m_head->next = m_tail;
-        m_tail->prev = m_head;
+        m_head = nullptr;
+        m_tail = nullptr;
 
         m_size = 0;
     }
@@ -143,10 +217,10 @@ public:
         {
             has_swapped = false;
 
-            node* it1 = m_head->next;
-            node* it2 = m_head->next->next;
+            node* it1 = m_head;
+            node* it2 = m_head->next;
 
-            while (it2 != m_tail)
+            while (it2 != nullptr)
             {
                 if (it1->data > it2->data)
                 {
@@ -169,9 +243,9 @@ public:
             return true;
         }
 
-        node* it = m_head->next;
+        node* it = m_head;
 
-        while (it->next != m_tail)
+        while (it->next != nullptr)
         {
             if (!(it->data < it->next->data))
             {
@@ -191,16 +265,13 @@ public:
 
     void reverse()
     {
-        // NOTE: After this, the nodes that were the head and the tail are swapped.
-
         node* it = m_head;
 
-        while (it != m_tail)
+        while (it != nullptr)
         {
             std::swap(it->next, it->prev);
             it = it->prev;
         }
-        std::swap(it->next, it->prev);
 
         std::swap(m_head, m_tail);
     }
@@ -216,8 +287,8 @@ public:
 
         oss << "{ ";
 
-        node* it = m_head->next;
-        while (it != m_tail)
+        node* it = m_head;
+        while (it != nullptr)
         {
             oss << it->data << " ";
             it = it->next;
@@ -258,8 +329,29 @@ private:
 
     void swap_nodes(node* n1, node* n2)
     {
-        std::tie(n1->prev->next, n1->next->prev, n2->prev->next, n2->next->prev)
-            = std::make_tuple(n2, n2, n1, n1);
+        if (n1->prev == nullptr)
+        {
+            if (n2->next != nullptr)
+            {
+                std::tie(n1->next->prev, n2->prev->next, n2->next->prev)
+                    = std::make_tuple(n2, n1, n1);
+            }
+        }
+        else
+        {
+            if (n2->next == nullptr)
+            {
+
+                std::tie(n1->prev->next, n1->next->prev, n2->prev->next)
+                    = std::make_tuple(n2, n2, n1);
+            }
+            else
+            {
+
+                std::tie(n1->prev->next, n1->next->prev, n2->prev->next, n2->next->prev)
+                    = std::make_tuple(n2, n2, n1, n1);
+            }
+        }
 
         std::swap(n1->next, n2->next);
         std::swap(n1->prev, n2->prev);
@@ -269,9 +361,9 @@ private:
     {
         // NOTE: Could be optimized by checking whether the position is closer to the beginning
         // or the end.
-        this->verify_required_size(pos);
+        this->verify_required_size(pos + 1);
 
-        node* it = m_head->next;
+        node* it = m_head;
 
         while (pos != 0)
         {
