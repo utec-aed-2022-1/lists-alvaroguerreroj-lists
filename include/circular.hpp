@@ -97,6 +97,11 @@ public:
         this->remove(it);
     }
 
+    T& operator[](size_type pos)
+    {
+        return this->nth_pointer(pos)->data;
+    }
+
     void clear()
     {
         node* it = m_head->next;
