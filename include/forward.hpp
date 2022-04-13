@@ -32,8 +32,6 @@ public:
     ForwardList(std::initializer_list<T> il)
         : ForwardList<T>()
     {
-        m_size = il.size();
-
         for (auto it = std::rbegin(il); it != std::rend(il); it++)
         {
             this->push_front(*it);
