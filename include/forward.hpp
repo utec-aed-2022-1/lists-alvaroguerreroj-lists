@@ -75,7 +75,6 @@ public:
         {
             node* back_p = this->last();
             back_p->next = new Node<T>(data);
-            back_p = back_p->next;
 
             m_size++;
         }
