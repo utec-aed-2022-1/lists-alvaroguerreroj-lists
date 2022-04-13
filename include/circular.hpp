@@ -93,4 +93,14 @@ private:
 
         m_size++;
     }
+
+    void remove(node* it)
+    {
+        it->prev->next = it->next;
+        it->next->prev = it->prev;
+
+        delete it;
+
+        m_size--;
+    }
 };
