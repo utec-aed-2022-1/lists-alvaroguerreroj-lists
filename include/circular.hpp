@@ -103,4 +103,21 @@ private:
 
         m_size--;
     }
+
+    node* nth_pointer(size_type pos)
+    {
+        // NOTE: Could be optimized by checking whether the position is closer to the beginning
+        // or the end.
+        this->verify_required_size(pos);
+
+        node* it = m_head->next;
+
+        while (pos != 0)
+        {
+            it = it->next;
+            pos--;
+        }
+
+        return it;
+    }
 };
