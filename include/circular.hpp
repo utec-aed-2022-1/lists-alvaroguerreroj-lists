@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <tuple>
+#include <utility>
 
 #include "list.hpp"
 
@@ -150,6 +152,15 @@ private:
         delete it;
 
         m_size--;
+    }
+
+    void swap_nodes(node* n1, node* n2)
+    {
+        std::tie(n1->prev->next, n1->next->prev, n2->prev->next, n2->next->prev)
+            = std::make_tuple(n2, n2, n1, n1);
+
+        std::swap(n1->next, n2->next);
+        std::swap(n1->prev, n2->prev);
     }
 
     node* nth_pointer(size_type pos)
