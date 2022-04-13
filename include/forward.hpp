@@ -6,6 +6,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <tuple>
+#include <utility>
 
 #include "list.hpp"
 
@@ -26,6 +27,52 @@ public:
         : m_head(nullptr),
           m_size(0)
     {
+    }
+
+    ForwardList(ForwardList<T> const& other)
+        : ForwardList()
+    {
+        node* it = other.m_head;
+
+        while (it != nullptr)
+        {
+            this->push_front(it->data);
+
+            it = it->next;
+        }
+
+        this->reverse();
+    }
+
+    ForwardList(ForwardList<T>&& other) noexcept
+        : ForwardList()
+    {
+        this->swap(other);
+    }
+
+    auto operator=(ForwardList<T> const& other) -> ForwardList<T>&
+    {
+        this->swap(ForwardList<T>(other));
+
+        return *this;
+    }
+
+    auto operator=(ForwardList<T>&& other) noexcept -> ForwardList<T>&
+    {
+        this->swap(other);
+
+        return *this;
+    }
+
+    friend void swap(ForwardList<T> fl1, ForwardList<T> fl2) noexcept
+    {
+        fl1.swap(fl2);
+    }
+
+    void swap(ForwardList<T> other) noexcept
+    {
+        std::swap(m_head, other.m_head);
+        std::swap(m_size, other.m_size);
     }
 
     ForwardList(std::initializer_list<T> il)
