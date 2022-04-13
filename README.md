@@ -41,3 +41,32 @@ Implementar todas las funciones en los .hpp
 > Asegurarse de que los tests pasen.
 
 > Total de tests: 24
+
+## Building
+
+You may use [Nix](https://nixos.org/download.html) to setup the environment.
+
+To set up the environment with Nix, run in the project directory…
+```bash
+nix-shell
+```
+
+Otherwise you need a C++ compiler,
+[`meson`](https://github.com/mesonbuild/meson) and optionally
+[`just`](https://github.com/casey/just).
+
+You may call `meson` directly:
+
+```bash
+meson setup build/
+meson compile -C build/
+```
+
+Or use `just`:
+
+```bash
+just setup
+just build
+```
+
+The binary is left at `build/src/main`.
