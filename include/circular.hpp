@@ -70,6 +70,17 @@ public:
         return ret;
     }
 
+    T pop_back()
+    {
+        this->verify_required_size(1);
+
+        T ret = m_head->prev->data;
+
+        this->remove(m_head->prev);
+
+        return ret;
+    }
+
     void remove(size_type pos)
     {
         this->verify_required_size(1);
