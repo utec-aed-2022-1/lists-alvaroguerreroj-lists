@@ -59,6 +59,15 @@ public:
         this->insert(data, m_head->prev, m_head);
     }
 
+    void remove(size_type pos)
+    {
+        this->verify_required_size(1);
+
+        node* it = this->nth_pointer(pos);
+
+        this->remove(it);
+    }
+
     void clear()
     {
         node* it = m_head->next;
