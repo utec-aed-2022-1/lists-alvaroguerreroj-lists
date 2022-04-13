@@ -1,9 +1,10 @@
 # -*- mode: just; -*-
 
 build_dir := "build/"
+compiler := "clang++"
 
 setup:
-    meson setup {{build_dir}}
+    CXX="{{compiler}}" meson setup {{build_dir}}
 
 build: _build_exists
     meson compile -C {{build_dir}}
