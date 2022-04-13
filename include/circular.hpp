@@ -81,6 +81,13 @@ public:
         return ret;
     }
 
+    void insert(T data, size_type pos)
+    {
+        node* nth_p = this->nth_pointer(pos);
+
+        this->insert(data, nth_p->prev, nth_p);
+    }
+
     void remove(size_type pos)
     {
         this->verify_required_size(1);
