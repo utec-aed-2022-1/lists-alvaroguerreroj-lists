@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <string>
 #include <tuple>
 #include <utility>
 
@@ -199,6 +200,11 @@ public:
             it = it->prev;
         }
         std::swap(it->next, it->prev);
+    }
+
+    std::string name()
+    {
+        return "CircularList";
     }
 
 private:
