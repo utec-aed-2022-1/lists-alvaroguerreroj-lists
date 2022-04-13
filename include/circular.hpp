@@ -59,6 +59,17 @@ public:
         this->insert(data, m_head->prev, m_head);
     }
 
+    T pop_front()
+    {
+        this->verify_required_size(1);
+
+        T ret = m_head->next->data;
+
+        this->remove(m_head->next);
+
+        return ret;
+    }
+
     void remove(size_type pos)
     {
         this->verify_required_size(1);
