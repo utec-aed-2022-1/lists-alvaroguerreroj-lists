@@ -6,6 +6,8 @@ compiler := "clang++"
 setup:
     CXX="{{compiler}}" meson setup {{build_dir}}
 
+resetup: clean setup
+
 build: _build_exists
     meson compile -C {{build_dir}}
 
