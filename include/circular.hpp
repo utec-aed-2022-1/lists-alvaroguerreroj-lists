@@ -184,6 +184,23 @@ public:
         return m_size;
     }
 
+    void reverse()
+    {
+        if (m_size < 2)
+        {
+            return;
+        }
+
+        node* it = m_head->next;
+
+        while (it != m_head)
+        {
+            std::swap(it->next, it->prev);
+            it = it->prev;
+        }
+        std::swap(it->next, it->prev);
+    }
+
 private:
     void verify_required_size(size_type n)
     {
