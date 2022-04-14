@@ -11,7 +11,7 @@ setup *args:
 resetup *args: clean
     just setup {{args}}
 
-clean: _build_exists
+clean:
     rm -rf {{build_dir}}
 
 format: _build_exists
