@@ -5,10 +5,11 @@ build_dir := "build/"
 build: _build_exists
     meson compile -C {{build_dir}}
 
-setup:
-    meson setup {{build_dir}}
+setup *args:
+    meson setup {{args}} {{build_dir}}
 
-resetup: clean setup
+resetup *args: clean
+    just setup {{args}}
 
 clean: _build_exists
     rm -rf {{build_dir}}
