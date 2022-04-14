@@ -266,7 +266,7 @@ private:
     {
         // NOTE: Could be optimized by checking whether the position is closer to the beginning
         // or the end.
-        this->verify_required_size(pos);
+        this->verify_required_size(pos + 1);
 
         node* it = m_head->next;
 
