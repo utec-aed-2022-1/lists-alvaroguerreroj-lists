@@ -1,13 +1,12 @@
 # -*- mode: just; -*-
 
 build_dir := "build/"
-compiler := "clang++"
 
 build: _build_exists
     meson compile -C {{build_dir}}
 
 setup:
-    CXX="{{compiler}}" meson setup {{build_dir}}
+    meson setup {{build_dir}}
 
 resetup: clean setup
 
