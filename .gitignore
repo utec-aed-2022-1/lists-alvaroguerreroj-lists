@@ -38,3 +38,6 @@ build/
 # Clangd
 compile_commands.json
 *.idx
+
+# Valgrind cores
+vgcore.*
