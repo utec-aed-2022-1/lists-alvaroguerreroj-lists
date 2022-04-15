@@ -41,3 +41,7 @@ compile_commands.json
 
 # Valgrind cores
 vgcore.*
+
+# direnv
+.envrc
+.direnv/
