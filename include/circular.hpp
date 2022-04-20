@@ -52,6 +52,29 @@ public:
         delete m_head;
     }
 
+    auto operator==(CircularList<T> const& other) const -> bool
+    {
+        if (this->m_size != other.m_size)
+        {
+            return false;
+        }
+
+        for (auto it1 = this->begin(), it2 = other.begin(); it1 != this->end(); it1++, it2++)
+        {
+            if (*it1 != *it2)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    auto operator!=(CircularList<T> const& other) const -> bool
+    {
+        return !(*this == other);
+    }
+
     iterator begin() const
     {
         return iterator(this, m_head->next);
