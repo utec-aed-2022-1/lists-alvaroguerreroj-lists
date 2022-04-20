@@ -57,6 +57,12 @@ public:
         this->insert(data, m_head, m_head->next);
     }
 
+    template<class... Args>
+    void emplace_front(Args&&... args)
+    {
+        this->insert(T(args...), m_head, m_head->next);
+    }
+
     void push_back(T data)
     {
         this->insert(data, m_head->prev, m_head);
