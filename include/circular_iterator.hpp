@@ -126,3 +126,13 @@ public:
         }
     }
 };
+
+template<typename T>
+struct std::iterator_traits<CircularListIterator<T>>
+{
+    using difference_type = int;
+    using value_type = T;
+    using pointer = T*;
+    using reference = T&;
+    using iterator_category = std::bidirectional_iterator_tag;
+};
