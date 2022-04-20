@@ -1,5 +1,6 @@
 #pragma once
 
+#include <initializer_list>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -43,6 +44,15 @@ public:
         for (auto it = other.begin(); it != other.end(); it++)
         {
             this->push_back(*it);
+        }
+    }
+
+    CircularList(std::initializer_list<T> il)
+        : CircularList()
+    {
+        for (auto& e : il)
+        {
+            this->emplace_back(std::move(e));
         }
     }
 
