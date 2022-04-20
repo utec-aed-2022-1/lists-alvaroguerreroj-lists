@@ -122,6 +122,11 @@ public:
         return m_size == 0;
     }
 
+    bool empty()
+    {
+        return this->is_empty();
+    }
+
     void clear()
     {
         node* it = m_head->next;
