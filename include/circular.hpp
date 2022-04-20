@@ -7,8 +7,8 @@
 #include <tuple>
 #include <utility>
 
-#include "list.hpp"
 #include "circular_iterator.hpp"
+#include "list.hpp"
 
 template<typename T>
 class CircularList : public List<T>
