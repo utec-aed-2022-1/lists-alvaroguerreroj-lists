@@ -68,6 +68,12 @@ public:
         this->insert(data, m_head->prev, m_head);
     }
 
+    template<class... Args>
+    void emplace_back(Args&&... args)
+    {
+        this->insert(T(args...), m_head->prev, m_head);
+    }
+
     T pop_front()
     {
         this->verify_required_size(1);
