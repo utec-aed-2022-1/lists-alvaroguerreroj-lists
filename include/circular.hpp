@@ -8,12 +8,17 @@
 #include <utility>
 
 #include "list.hpp"
+#include "circular_iterator.hpp"
 
 template<typename T>
 class CircularList : public List<T>
 {
 public:
     using typename List<T>::size_type;
+
+    using iterator = CircularListIterator<T>;
+
+    friend CircularListIterator<T>;
 
 private:
     using node = Node<T>;
@@ -36,6 +41,16 @@ public:
     {
         this->clear();
         delete m_head;
+    }
+
+    iterator begin() const
+    {
+        return iterator(this, m_head->next);
+    }
+
+    iterator end() const
+    {
+        return iterator(this, m_head);
     }
 
     T front()
