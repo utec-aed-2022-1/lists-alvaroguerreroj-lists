@@ -24,7 +24,7 @@ public:
     virtual void insert(T, size_type) = 0;
     virtual void remove(size_type) = 0;
     virtual T& operator[](size_type) = 0; // debe ser declarado en cada clase hija
-    virtual bool is_empty() = 0;
+    virtual bool is_empty() const = 0;
     virtual size_type size() = 0;
     virtual void clear() = 0;
     virtual void sort() = 0;

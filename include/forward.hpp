@@ -195,7 +195,7 @@ public:
         return this->nth_pointer(pos)->data;
     }
 
-    auto is_empty() -> bool
+    auto is_empty() const -> bool
     {
         return m_size == 0;
     }

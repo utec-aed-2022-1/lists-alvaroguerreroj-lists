@@ -132,12 +132,12 @@ public:
         return this->nth_pointer(pos)->data;
     }
 
-    bool is_empty()
+    bool is_empty() const
     {
         return m_size == 0;
     }
 
-    bool empty()
+    bool empty() const
     {
         return this->is_empty();
     }
