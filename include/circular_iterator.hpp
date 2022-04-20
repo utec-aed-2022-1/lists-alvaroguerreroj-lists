@@ -35,6 +35,11 @@ public:
 
     ~CircularListIterator() = default;
 
+    auto operator*() -> T&
+    {
+        return m_node_p->data;
+    }
+
     auto operator=(cl_iter const& other) -> CircularListIterator<T>&
     {
         if (this != &other)
