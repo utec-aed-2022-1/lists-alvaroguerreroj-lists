@@ -37,6 +37,15 @@ public:
         m_head->prev = m_head;
     }
 
+    CircularList(CircularList<T> const& other)
+        : CircularList()
+    {
+        for (auto it = other.begin(); it != other.end(); it++)
+        {
+            this->push_back(*it);
+        }
+    }
+
     ~CircularList()
     {
         this->clear();
