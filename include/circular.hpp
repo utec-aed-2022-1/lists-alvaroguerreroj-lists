@@ -95,14 +95,14 @@ public:
         return iterator(this, m_head);
     }
 
-    T front()
+    T& front()
     {
         this->verify_required_size(1);
 
         return m_head->next->data;
     }
 
-    T back()
+    T& back()
     {
         this->verify_required_size(1);
 
