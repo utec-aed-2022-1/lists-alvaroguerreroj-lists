@@ -37,8 +37,14 @@ public:
         return m_node_p->data;
     }
 
+    auto operator->() -> T*
     {
+        return &(m_node_p->data);
+    }
 
+    auto operator->() const -> T const*
+    {
+        return &(m_node_p->data);
     }
 
     auto operator=(cl_iter const& other) -> CircularListIterator<T>& = default;
