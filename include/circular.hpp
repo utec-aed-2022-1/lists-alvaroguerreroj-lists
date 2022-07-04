@@ -266,7 +266,7 @@ public:
         return true;
     }
 
-    size_type size()
+    size_type size() const
     {
         return m_size;
     }
