@@ -27,11 +27,8 @@ public:
     {
     }
 
-    CircularListIterator(CircularListIterator const& other)
-        : m_cl(other.m_cl),
-          m_node_p(other.m_node_p)
-    {
-    }
+    CircularListIterator(CircularListIterator const& other) = default;
+    CircularListIterator(CircularListIterator&& other) noexcept = default;
 
     ~CircularListIterator() = default;
 
