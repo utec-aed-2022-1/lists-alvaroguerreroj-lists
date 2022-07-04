@@ -62,6 +62,18 @@ public:
         delete m_head;
     }
 
+    auto operator=(CircularList const& other) -> CircularList&
+    {
+        this->swap(CircularList(other));
+        return *this;
+    }
+
+    auto operator=(CircularList&& other) noexcept -> CircularList&
+    {
+        this->swap(other);
+        return *this;
+    }
+
     auto operator==(CircularList<T> const& other) const -> bool
     {
         if (this->m_size != other.m_size)
