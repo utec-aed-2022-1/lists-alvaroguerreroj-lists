@@ -62,6 +62,18 @@ public:
         delete m_head;
     }
 
+    void swap(CircularList& other)
+    {
+        std::swap(m_head, other.m_head);
+        std::swap(m_size, other.m_size);
+    }
+
+    void swap(CircularList&& other)
+    {
+        std::swap(m_head, other.m_head);
+        std::swap(m_size, other.m_size);
+    }
+
     auto operator=(CircularList const& other) -> CircularList&
     {
         this->swap(CircularList(other));
