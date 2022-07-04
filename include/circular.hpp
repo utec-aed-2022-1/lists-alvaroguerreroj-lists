@@ -56,6 +56,8 @@ public:
         }
     }
 
+    CircularList(CircularList<T>&& other) = delete;
+
     ~CircularList()
     {
         this->clear();
