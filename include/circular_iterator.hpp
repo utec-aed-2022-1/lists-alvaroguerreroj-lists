@@ -37,15 +37,12 @@ public:
         return m_node_p->data;
     }
 
-    auto operator=(cl_iter const& other) -> CircularListIterator<T>&
     {
-        if (this != &other)
-        {
-            this->swap(CircularListIterator<T>(other));
-        }
 
-        return *this;
     }
+
+    auto operator=(cl_iter const& other) -> CircularListIterator<T>& = default;
+    auto operator=(cl_iter&& other) noexcept -> CircularListIterator<T>& = default;
 
     void swap(cl_iter& other)
     {
