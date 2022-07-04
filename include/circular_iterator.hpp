@@ -52,8 +52,9 @@ public:
 
     void swap(cl_iter& other)
     {
-        std::swap(m_cl, other.m_cl);
-        std::swap(m_node_p, other.m_node_p);
+        using std::swap;
+        swap(m_cl, other.m_cl);
+        swap(m_node_p, other.m_node_p);
     }
 
     auto operator==(cl_iter const& other) -> bool
