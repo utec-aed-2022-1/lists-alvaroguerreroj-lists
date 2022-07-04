@@ -12,10 +12,10 @@
 #include "list.hpp"
 
 template<typename T>
-class CircularList : public List<T>
+class CircularList
 {
 public:
-    using typename List<T>::size_type;
+    using size_type = size_t;
 
     using iterator = CircularListIterator<T>;
 
