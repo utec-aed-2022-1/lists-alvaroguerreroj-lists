@@ -57,12 +57,12 @@ public:
         swap(m_node_p, other.m_node_p);
     }
 
-    auto operator==(cl_iter const& other) -> bool
+    auto operator==(cl_iter const& other) const -> bool
     {
         return m_cl == m_cl && m_node_p == other.m_node_p;
     }
 
-    auto operator!=(cl_iter const& other) -> bool
+    auto operator!=(cl_iter const& other) const -> bool
     {
         return !(*this == other);
     }
