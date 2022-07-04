@@ -15,11 +15,11 @@ private:
 
     using node = typename cl::node;
 
-    cl const* m_cl;
-    node* m_node_p;
+    cl const* m_cl{nullptr};
+    node* m_node_p{nullptr};
 
 public:
-    CircularListIterator() = delete;
+    CircularListIterator() = default;
 
     CircularListIterator(cl const* cl, node* node_p)
         : m_cl(cl),
