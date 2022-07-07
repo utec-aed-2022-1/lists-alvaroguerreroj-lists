@@ -1,0 +1,6 @@
+install_headers('circular.hpp')
+install_headers('double.hpp')
+install_headers('forward.hpp')
+install_headers('list.hpp')
+install_headers('node.hpp')
+install_headers('tester.hpp')
